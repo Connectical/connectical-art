@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.4: http://docutils.sourceforge.net/" />
+<title>Connectical LaTeX document class</title>
+<meta name="author" content="Adrián Pérez &lt;moebius&#64;connectical.net&gt;, Andrés J. Díaz &lt;ajdiaz&#64;connectical.net&gt;" />
+<meta name="copyright" content="Copyright © 2006 Connectical Labs." />
+<link rel="stylesheet" href="default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="connectical-latex-document-class">
+<h1 class="title">Connectical LaTeX document class</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>Adrián Pérez &lt;<a class="reference" href="mailto:moebius&#64;connectical.net">moebius&#64;connectical.net</a>&gt;,
+Andrés J. Díaz &lt;<a class="reference" href="mailto:ajdiaz&#64;connectical.net">ajdiaz&#64;connectical.net</a>&gt;</td></tr>
+<tr><th class="docinfo-name">Copyright:</th>
+<td>Copyright © 2006 Connectical Labs.</td></tr>
+</tbody>
+</table>
+<div class="abstract topic">
+<p class="topic-title first">Abstract</p>
+<p>This is a document class for LaTeX specially developed for
+documentation produced at Connectical. It is mainly based upon
+the <tt class="docutils literal"><span class="pre">scrartcl</span></tt> document class included in the <a class="reference" href="http://www.komascript.de">KOMA-Script</a>
+package.</p>
+</div>
+<div class="contents topic">
+<p class="topic-title first"><a id="contents" name="contents">Contents</a></p>
+<ul class="simple">
+<li><a class="reference" href="#changes-over-the-koma-script-article-class" id="id1" name="id1">Changes over the KOMA-Script article class</a></li>
+<li><a class="reference" href="#implementation" id="id2" name="id2">Implementation</a><ul>
+<li><a class="reference" href="#version" id="id3" name="id3">Version</a></li>
+<li><a class="reference" href="#preliminary-declarations" id="id4" name="id4">Preliminary declarations</a></li>
+<li><a class="reference" href="#document-preamble" id="id5" name="id5">Document preamble</a><ul>
+<li><a class="reference" href="#packages" id="id6" name="id6">Packages</a></li>
+<li><a class="reference" href="#command-definitions" id="id7" name="id7">Command definitions</a></li>
+<li><a class="reference" href="#default-values-for-required-fields" id="id8" name="id8">Default values for required fields</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id1" id="changes-over-the-koma-script-article-class" name="changes-over-the-koma-script-article-class">Changes over the KOMA-Script article class</a></h1>
+<ul class="simple">
+<li>The first page includes a black band with the inverse Connectical
+logo over it, right aligned.</li>
+<li>Different title layout for the <tt class="docutils literal"><span class="pre">\maketitle</span></tt> command.</li>
+<li>The table of contents is designed to be output just after the
+title of the document, and it will <strong>always</strong> force a new page
+after it. Also, when the first page has table of contents it
+won't have page numbering either.</li>
+</ul>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id2" id="implementation" name="implementation">Implementation</a></h1>
+<div class="section">
+<h2><a class="toc-backref" href="#id3" id="version" name="version">Version</a></h2>
+<p>Define our own version number and date of last-modification for this
+release.</p>
+<pre class="literal-block">
+\newcommand{\connecticalversion}{A0A3}
+\newcommand{\connecticalupdated}{2006/05/12}
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id4" id="preliminary-declarations" name="preliminary-declarations">Preliminary declarations</a></h2>
+<p>We must be sure that the user is running LaTeX 2e or better. Nearly
+everybody does, but checking for it does not harm.</p>
+<pre class="literal-block">
+\NeedsTeXFormat{LaTeX2e}
+</pre>
+<p>Declare which document class do we provide in this <tt class="docutils literal"><span class="pre">.cls</span></tt> file.</p>
+<pre class="literal-block">
+\ProvidesClass{connectical}%
+    [\connecticalupdated\space\connecticalversion\space LaTeX2e document class]
+</pre>
+<p>Load the class this one is based upon (<tt class="docutils literal"><span class="pre">scrartcl</span></tt>, from <a class="reference" href="http://www.komascript.de">KOMA-Script</a>).
+Also, pass options to it:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">a4paper</span></tt> - Here in Europe we use the DIN A4 paper size. If this
+needs to be changed someday, we'll have to move this parameter to the
+class itself, instead of hardcoding it here.</li>
+<li><tt class="docutils literal"><span class="pre">11pt</span></tt> and <tt class="docutils literal"><span class="pre">DIVcalc</span></tt> - Select <em>standard</em> font size (11pt is enough
+for most cases: 10pt would be small for some stuff and 12pt is way too
+big) and declare wether we want text width and height being calculed
+depending on paper size and font size.</li>
+<li><tt class="docutils literal"><span class="pre">onesize</span></tt> - Allows for printing either on one-sided media and
+two-sided media, without having a bad look when document is printed
+one-side.</li>
+</ul>
+<pre class="literal-block">
+\LoadClass[a4paper,11pt,DIVcalc,oneside]{scrartcl}
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id5" id="document-preamble" name="document-preamble">Document preamble</a></h2>
+<div class="section">
+<h3><a class="toc-backref" href="#id6" id="packages" name="packages">Packages</a></h3>
+<p>We do load the <tt class="docutils literal"><span class="pre">ae</span></tt> package, which provides nice PostScript fonts when
+generating PDF output without the big mess of configuring TeX to produce
+good output when using the <tt class="docutils literal"><span class="pre">T1</span></tt> encoding. This way we can keep using
+the <tt class="docutils literal"><span class="pre">OT1</span></tt> encoding, which is more compatible among different TeX/LaTeX
+distributions, without loosing usage of extended character maps (ISO
+Latin, Unicode...)</p>
+<p>The <tt class="docutils literal"><span class="pre">aeguill</span></tt> package provides french guillements («like the ones
+enclosing this text») when using the <tt class="docutils literal"><span class="pre">ae</span></tt> package, which does not
+install a character map for them.</p>
+<p>The two AMS packages (<tt class="docutils literal"><span class="pre">amsmath</span></tt> and <tt class="docutils literal"><span class="pre">amssymb</span></tt>) provide enhanced
+support for typesetting in math mode, as well as extra symbols used by
+the LaTeX generator included with <a class="reference" href="http://docutils.sourceforge.net">Docutils</a>.</p>
+<p>Finally, the <tt class="docutils literal"><span class="pre">cmtt</span></tt> package overrides the default Computer Modern
+monospaced font with a virtual version of it which provides extended
+character maps and more variations over the standard monospaced font
+(italic, bold, small caps...).</p>
+<pre class="literal-block">
+\usepackage{ae}
+\usepackage{aeguill}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[override]{cmtt}
+</pre>
+<p>We often use graphics and colored output in documents, so we provide the
+<tt class="docutils literal"><span class="pre">color</span></tt> and <tt class="docutils literal"><span class="pre">graphicx</span></tt> packages when loading our document class. In
+order to provide better output for graphics we check for pdfTeX being run
+and supply the appropiate option to the <tt class="docutils literal"><span class="pre">graphicx</span></tt> package in this
+case.</p>
+<pre class="literal-block">
+\usepackage[dvipsnames,usenames]{color}
+
+\ifx\pdftexversion\undefined
+    \usepackage{graphicx}
+\else
+    \usepackage[pdftex]{graphicx}
+\fi
+</pre>
+<p>Last, but not least, do hyperlinks between sections of the document using
+the <tt class="docutils literal"><span class="pre">hyperref</span></tt> package. Blue is a nice colour for hyperlinks. Also, set
+the view to «fit width» when loading the PDF in a viewer (most viewers,
+including popular ones like Evince, Acrobat and Kpdf support this).</p>
+<pre class="literal-block">
+\usepackage[colorlinks=true,
+    linkcolor=blue, urlcolor=blue,
+    pdfstartview=FitH]{hyperref}
+</pre>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id7" id="command-definitions" name="command-definitions">Command definitions</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">\email</span></tt> command is used to insert an e-mail address. The address
+is converted into a clickable hyperlink. Similarly, the <tt class="docutils literal"><span class="pre">\amail</span></tt>
+command creates an hyperlinked e-mail address, but inserted between
+angles.</p>
+<pre class="literal-block">
+\newcommand{\email}[1]%
+    {\href{mailto:#1}{#1}}
+
+\newcommand{\amail}[1]%
+    {\ensuremath\langle\email{#1}\ensuremath\rangle}
+</pre>
+<p>The <tt class="docutils literal"><span class="pre">\cyear</span></tt> command defines the year which the copyright notice of
+the document applies to. By default takes the current year as value, if
+not used in the document preamble.</p>
+<pre class="literal-block">
+\newcommand{\cyear}[1]%
+    {\ifx\empty#1\empty\else\gdef\&#64;cyear{#1}\fi}
+</pre>
+<p>Redefine the <tt class="docutils literal"><span class="pre">\label</span></tt> command so it creates targets which can get
+hyperlinked by using the <tt class="docutils literal"><span class="pre">hyperref</span></tt> package imported earlier in the
+document preamble.</p>
+<pre class="literal-block">
+\let\tmp&#64;label=\label
+\renewcommand{\label}[1]%
+    {\hypertarget{#1}{}\tmp&#64;label{#1}}
+</pre>
+<p>We also redefine the <tt class="docutils literal"><span class="pre">\tableofcontents</span></tt> command to style it. When
+using the table of contents in the document, the first page is set not
+to have page numbering, and text starts in the next page, after the
+table of contents. Note that we must reset the <tt class="docutils literal"><span class="pre">page</span></tt> counter to
+make LaTeX start numbering pages with the right number after the table
+of contents is put in the output!</p>
+<pre class="literal-block">
+\let\tmp&#64;toc=\tableofcontents
+\renewcommand{\tableofcontents}[0]{%
+        \thispagestyle{empty}%
+        \tmp&#64;toc\newpage%
+        \setcounter{page}{1}%
+    }%
+</pre>
+<p>This is the most elaborate redefinition: <tt class="docutils literal"><span class="pre">\maketitle</span></tt>. The title is
+set up so:</p>
+<ol class="arabic simple">
+<li>It has a black box over it, with a white Connectical logo aligned
+at the right into the box.</li>
+<li>A separation of 5em follows.</li>
+<li>The title is printed out, left aligned, in bold sans-serif face,
+with <tt class="docutils literal"><span class="pre">huge</span></tt> size.</li>
+<li>A small space (1.5em) follows.</li>
+<li>The author field is printed out, in <tt class="docutils literal"><span class="pre">normal</span></tt>-sized sans-serif
+face.</li>
+<li>A space of 4em remains before the rest of the content.</li>
+</ol>
+<div class="warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The logo is an external PDF/EPS file which gets included
+by using <tt class="docutils literal"><span class="pre">\includegraphics</span></tt>. We should consider using PStricks
+to render it (<a class="reference" href="http://www.inkscape.org">InkScape</a> exports to PStricks format, I believe).</p>
+</div>
+<p>Note that we take care of properly setting the title of the generated
+PDF documents by invoking <tt class="docutils literal"><span class="pre">\hypersetup</span></tt> here.</p>
+<pre class="literal-block">
+\renewcommand{\maketitle}{%
+    \noindent\colorbox{black}{\parbox{\textwidth}{%
+        \hfill\includegraphics[width=4cm]{connectical-i}%
+    }}%
+    \vspace{5em}%
+    \noindent\parbox{\textwidth}{%
+        \huge\sffamily\bfseries\&#64;title%
+    }%
+    \vspace{1.5em}\\
+    {\sffamily\&#64;author}%
+    \vspace{4em}%
+    \hypersetup{pdftitle={\&#64;title}}%
+}%
+</pre>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id8" id="default-values-for-required-fields" name="default-values-for-required-fields">Default values for required fields</a></h3>
+<pre class="literal-block">
+\cyear{\number\year}
+\parskip = 0.65em
+\parindent = 0in
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

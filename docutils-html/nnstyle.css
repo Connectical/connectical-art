@@ -1,0 +1,187 @@
+/*
+ * nnstyle.css
+ * Copyright (C) 2006 Connectical Labs.
+ * Author: Adrian Perez <acastro@connectical.net>
+ *
+ * Distributed under terms of the MIT license.
+ */
+
+body, html {
+  font-family: "Verdana", "Bitstream Vera Sans", "Lucida Grande",
+      "Lucidux", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+  background: #fff;
+  color: #000;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+}
+
+body {
+	margin: 3em 5em;
+}
+
+h1, h2, h3, h4, h5, h6, p, ol, dl {
+  font-family: "Verdana", "Bitstream Vera Sans", "Lucida Grande",
+      "Lucidux", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+}
+
+p, li, dd, td {
+	text-align: justify;
+}
+
+p, ul, ol, dl, table, pre {
+	margin-left: 1em;
+}
+
+pre {
+  border: 1px solid #dedfe0;
+  background: #efeff5;
+  padding: 0.3em;
+	overflow: auto;
+}
+
+a {
+  color: #0052a3;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #592;
+}
+
+h1 {
+  margin: 0 0 1.5em 0;
+  border: 1px solid #dedfe0;
+  padding: 0.1em 0.3em;
+  background: #efeff5;
+  -moz-border-radius: 10px;
+}
+
+
+h2 {
+	margin-left: -0.8em;
+}
+h2 a {
+	padding-left: 0.4em;
+	padding-right: 0.8em;
+	border-left: 0.4em solid #0052a3;
+	border-bottom: 1px solid #0052a3;
+}
+h2 a:hover {
+	border-color: #592;
+}
+
+dt {
+	/* float: left;
+	clear: left;
+	margin-right: 1em; */
+	font-weight: bold;
+}
+dd {
+	margin-left: 2em;
+	margin-bottom: 0.5em;
+}
+
+div.contents, table.docinfo, div.sidebar {
+	float: right;
+	clear: right;
+	width: 25%;
+	border: 1px solid #dedfe0;
+	margin: 0 0 2em 2em;
+  background: #f8f8ff;
+}
+
+div.contents li, div.contents p {
+	text-align: left;
+}
+
+div.sidebar p {
+	margin: 0;
+	padding: 0.4em 0.8em;
+}
+
+div.contents p.topic-title, div.sidebar p.sidebar-title {
+  font-weight: bold;
+  background: #efeff5;
+	margin: 0;
+	padding: 0.4em 0.8em;
+	border-bottom: 1px solid #dedfe0;
+}
+
+div.contents ol, div.contents ul {
+	margin: 0.3em;
+	padding-left: 1.5em;
+}
+
+
+div.note, div.important, div.warning, div.tip, div.danger,
+div.caution, div.attention, div.hint, div.error, div.admonition {
+  margin: 1em 0;
+  border: 1px solid #dedfe0;
+  overflow: hidden;
+	background: #f8f8ff;
+}
+
+div.note p, div.important p, div.warning p, div.tip p,
+div.error p, div.danger p, div.caution p, div.attention p,
+div.hint p, div.admonition p {
+	margin: 0.5em;
+}
+
+p.admonition-title {
+  background: #efeff5;
+  margin: 0 ! important;
+  padding: 0.15em 0.5em;
+  font-style: italic;
+  font-weight: bold;
+  border-bottom: 1px solid #dedfe0;
+}
+
+div.error, div.danger {
+  background: #fbb;
+  border-color: #f66;
+}
+div.warning p.admonition-title, div.danger p.admonition-title {
+	background: #ffd6d6;
+	border-color: #faa;
+}
+div.warning, div.danger {
+  background: #ffe0e0;
+  border-color: #faa;
+}
+
+
+table.docinfo, table.docinfo tr, table.docinfo th, table.docinfo td,
+table.docinfo tbody, table.docinfo col {
+	display: block;
+}
+table.docinfo tbody {
+	border: 1px solid #dedfe0;
+}
+table.docinfo th, table.docinfo td {
+	text-align: left;
+	padding: 0;
+	margin: 0;
+}
+table.docinfo th {
+  float: left;
+  font-weight: bold;
+}
+table.docinfo th, table.docinfo td {
+	padding: 0.4em 0.8em;
+	margin: 0;
+}
+table.docinfo td {
+	margin-left: 0.75em;
+}
+
+table.field-list th, table.field-list td {
+	border-top: 1px solid #dedfe0;
+	padding: 0.5em;
+}
+table.field-list tr:first-child th, table.field-list tr:first-child td {
+	border-top: none;
+}
+table.field-list .field-name {
+	text-align: right;
+}

@@ -1,0 +1,230 @@
+
+%% ==================================
+%%  Connectical LaTeX document class
+%% ==================================
+%%
+%% :Author:
+%%   Adrián Pérez <moebius@connectical.net>,
+%%   Andrés J. Díaz <ajdiaz@connectical.net>
+%% :Copyright:
+%%   Copyright © 2006 Connectical Labs.
+%% :Abstract:
+%%   This is a document class for LaTeX specially developed for
+%%   documentation produced at Connectical. It is mainly based upon
+%%   the ``scrartcl`` document class included in the `KOMA-Script`_
+%%   package.
+%%
+%% .. _KOMA-Script: http://www.komascript.de
+%%
+%% .. contents::
+%%
+%% Changes over the KOMA-Script article class
+%% ==========================================
+%%
+%% * The first page includes a black band with the inverse Connectical
+%%   logo over it, right aligned.
+%%
+%% * Different title layout for the ``\maketitle`` command.
+%%
+%% * The table of contents is designed to be output just after the
+%%   title of the document, and it will **always** force a new page
+%%   after it. Also, when the first page has table of contents it
+%%   won't have page numbering either.
+%%
+%%
+%% Implementation
+%% ==============
+%%
+%% Version
+%% -------
+%%
+%% Define our own version number and date of last-modification for this
+%% release.
+
+\newcommand{\connecticalversion}{A0A3}
+\newcommand{\connecticalupdated}{2006/05/12}
+
+%% Preliminary declarations
+%% ------------------------
+%%
+%% We must be sure that the user is running LaTeX 2e or better. Nearly
+%% everybody does, but checking for it does not harm.
+
+\NeedsTeXFormat{LaTeX2e}
+
+%% Declare which document class do we provide in this ``.cls`` file.
+
+\ProvidesClass{connectical}%
+	[\connecticalupdated\space\connecticalversion\space LaTeX2e document class]
+
+%% Load the class this one is based upon (``scrartcl``, from `KOMA-Script`_).
+%% Also, pass options to it:
+%%
+%% * ``a4paper`` - Here in Europe we use the DIN A4 paper size. If this
+%%   needs to be changed someday, we'll have to move this parameter to the
+%%   class itself, instead of hardcoding it here.
+%%
+%% * ``11pt`` and ``DIVcalc`` - Select *standard* font size (11pt is enough
+%%   for most cases: 10pt would be small for some stuff and 12pt is way too
+%%   big) and declare wether we want text width and height being calculed
+%%   depending on paper size and font size.
+%%
+%% * ``onesize`` - Allows for printing either on one-sided media and
+%%   two-sided media, without having a bad look when document is printed
+%%   one-side.
+
+\LoadClass[a4paper,11pt,DIVcalc,oneside]{scrartcl}
+
+%% Document preamble
+%% -----------------
+%%
+%% Packages
+%% ~~~~~~~~
+%% We do load the ``ae`` package, which provides nice PostScript fonts when
+%% generating PDF output without the big mess of configuring TeX to produce
+%% good output when using the ``T1`` encoding. This way we can keep using
+%% the ``OT1`` encoding, which is more compatible among different TeX/LaTeX
+%% distributions, without loosing usage of extended character maps (ISO
+%% Latin, Unicode...)
+%%
+%% The ``aeguill`` package provides french guillements («like the ones
+%% enclosing this text») when using the ``ae`` package, which does not
+%% install a character map for them.
+%%
+%% The two AMS packages (``amsmath`` and ``amssymb``) provide enhanced
+%% support for typesetting in math mode, as well as extra symbols used by
+%% the LaTeX generator included with Docutils_.
+%%
+%% Finally, the ``cmtt`` package overrides the default Computer Modern
+%% monospaced font with a virtual version of it which provides extended
+%% character maps and more variations over the standard monospaced font
+%% (italic, bold, small caps...).
+%%
+%% .. _Docutils: http://docutils.sourceforge.net
+
+\usepackage{ae}
+\usepackage{aeguill}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[override]{cmtt}
+
+%% We often use graphics and colored output in documents, so we provide the
+%% ``color`` and ``graphicx`` packages when loading our document class. In
+%% order to provide better output for graphics we check for pdfTeX being run
+%% and supply the appropiate option to the ``graphicx`` package in this
+%% case.
+
+\usepackage[dvipsnames,usenames]{color}
+
+\ifx\pdftexversion\undefined
+	\usepackage{graphicx}
+\else
+	\usepackage[pdftex]{graphicx}
+\fi
+
+%% Last, but not least, do hyperlinks between sections of the document using
+%% the ``hyperref`` package. Blue is a nice colour for hyperlinks. Also, set
+%% the view to «fit width» when loading the PDF in a viewer (most viewers,
+%% including popular ones like Evince, Acrobat and Kpdf support this).
+
+\usepackage[hyperref]{ucs}
+\AtBeginDocument{\PreloadUnicodePage{0}}
+\AtBeginDocument{\PreloadUnicodePage{1}}
+
+\usepackage[colorlinks=true,
+	linkcolor=blue, urlcolor=blue,
+	pdfstartview=FitH]{hyperref}
+
+
+%% Command definitions
+%% ~~~~~~~~~~~~~~~~~~~
+%% The ``\email`` command is used to insert an e-mail address. The address
+%% is converted into a clickable hyperlink. Similarly, the ``\amail``
+%% command creates an hyperlinked e-mail address, but inserted between
+%% angles.
+
+\newcommand{\email}[1]%
+	{\href{mailto:#1}{#1}}
+
+\newcommand{\amail}[1]%
+	{\ensuremath\langle\email{#1}\ensuremath\rangle}
+
+%% The ``\cyear`` command defines the year which the copyright notice of
+%% the document applies to. By default takes the current year as value, if
+%% not used in the document preamble.
+
+\newcommand{\cyear}[1]%
+	{\ifx\empty#1\empty\else\gdef\@cyear{#1}\fi}
+
+%% Redefine the ``\label`` command so it creates targets which can get
+%% hyperlinked by using the ``hyperref`` package imported earlier in the
+%% document preamble.
+
+\let\tmp@label=\label
+\renewcommand{\label}[1]%
+	{\hypertarget{#1}{}\tmp@label{#1}}
+
+%% We also redefine the ``\tableofcontents`` command to style it. When
+%% using the table of contents in the document, the first page is set not
+%% to have page numbering, and text starts in the next page, after the
+%% table of contents. Note that we must reset the ``page`` counter to
+%% make LaTeX start numbering pages with the right number after the table
+%% of contents is put in the output!
+
+\let\tmp@toc=\tableofcontents
+\renewcommand{\tableofcontents}[0]{%
+		\thispagestyle{empty}%
+		\tmp@toc\newpage%
+		\setcounter{page}{1}%
+	}%
+
+%% This is the most elaborate redefinition: ``\maketitle``. The title is
+%% set up so:
+%%
+%% #. It has a black box over it, with a white Connectical logo aligned
+%%    at the right into the box.
+%%
+%% #. A separation of 5em follows.
+%%
+%% #. The title is printed out, left aligned, in bold sans-serif face,
+%%    with ``huge`` size.
+%%
+%% #. A small space (1.5em) follows.
+%%
+%% #. The author field is printed out, in ``normal``-sized sans-serif
+%%    face.
+%%
+%% #. A space of 4em remains before the rest of the content.
+%%
+%% .. warning:: The logo is an external PDF/EPS file which gets included
+%%      by using ``\includegraphics``. We should consider using PStricks
+%%      to render it (InkScape_ exports to PStricks format, I believe).
+%%
+%% Note that we take care of properly setting the title of the generated
+%% PDF documents by invoking ``\hypersetup`` here.
+%%
+%% .. _InkScape: http://www.inkscape.org
+
+\renewcommand{\maketitle}{%
+	\noindent\colorbox{black}{\parbox{\textwidth}{%
+		\hfill\includegraphics[width=4cm]{connectical-i}%
+	}}\vspace{5em}\\%
+	\noindent\parbox{\textwidth}{%
+		\huge\sffamily\bfseries\@title%
+	}%
+	\vspace{1.5em}\\
+	{\sffamily\@author}%
+	\vspace{4em}%
+	\hypersetup{pdftitle={\@title}}%
+}%
+
+
+%% Default values for required fields
+%% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\cyear{\number\year}
+\parskip = 0.65em
+\parindent = 0in
+
+%%- vim:ft=tex:
+

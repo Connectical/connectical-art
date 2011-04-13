@@ -1,0 +1,23 @@
+============================
+ A small example using ReST
+============================
+
+:Author: Adrian Perez
+
+.. contents::
+
+Jaja.
+
+Title One
+=========
+
+Blah, blah, blah.
+
+Title Two
+=========
+
+Subtitle
+--------
+
+Blah, blah, blah.
+

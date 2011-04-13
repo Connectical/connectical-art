@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="389.76376"
+   height="389.76376"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   version="1.0"
+   sodipodi:docbase="/home/acastro/connectical/artwork/logo"
+   sodipodi:docname="wb.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.3726263"
+     inkscape:cx="194.88188"
+     inkscape:cy="194.88188"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     width="110mm"
+     height="110mm"
+     showguides="false"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1364"
+     inkscape:window-height="715"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:guide-points="true"
+     units="mm">
+    <sodipodi:guide
+       orientation="vertical"
+       position="35.433071"
+       id="guide2162" />
+    <sodipodi:guide
+       orientation="horizontal"
+       position="35.433071"
+       id="guide2164" />
+    <sodipodi:guide
+       orientation="horizontal"
+       position="354.33071"
+       id="guide2166" />
+    <sodipodi:guide
+       orientation="vertical"
+       position="354.33071"
+       id="guide2168" />
+    <sodipodi:guide
+       orientation="vertical"
+       position="88.582677"
+       id="guide3141" />
+    <sodipodi:guide
+       orientation="vertical"
+       position="301.1811"
+       id="guide3143" />
+    <sodipodi:guide
+       orientation="horizontal"
+       position="124.01575"
+       id="guide3145" />
+    <sodipodi:guide
+       orientation="horizontal"
+       position="301.1811"
+       id="guide3147" />
+    <sodipodi:guide
+       orientation="horizontal"
+       position="265.74803"
+       id="guide3149" />
+    <sodipodi:guide
+       orientation="horizontal"
+       position="88.582677"
+       id="guide3151" />
+    <sodipodi:guide
+       orientation="vertical"
+       position="124.01575"
+       id="guide3153" />
+    <sodipodi:guide
+       orientation="vertical"
+       position="265.74803"
+       id="guide3155" />
+    <sodipodi:guide
+       orientation="vertical"
+       position="159.44882"
+       id="guide3157" />
+    <sodipodi:guide
+       orientation="vertical"
+       position="230.31496"
+       id="guide3159" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.92615736;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2160"
+       width="317.93457"
+       height="317.93454"
+       x="36.396141"
+       y="36.396152"
+       ry="0"
+       rx="0" />
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 88.582677,88.582662 L 159.44882,88.582662 L 159.44882,124.01573 L 124.01575,124.01573 L 124.01575,265.74801 L 159.44882,265.74801 L 159.44882,301.18108 L 88.582677,301.18108 L 88.582677,88.582662 z "
+       id="path3161"
+       sodipodi:nodetypes="ccccccccc" />
+    <path
+       id="path3163"
+       d="M 301.1811,88.582663 L 230.31496,88.582663 L 230.31496,124.01573 L 265.74803,124.01573 L 265.74803,265.74801 L 230.31496,265.74801 L 230.31496,301.18108 L 301.1811,301.18108 L 301.1811,88.582663 z "
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       sodipodi:nodetypes="ccccccccc" />
+  </g>
+</svg>
